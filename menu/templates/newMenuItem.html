@@ -6,7 +6,11 @@
 	<h1>Create New Menu Item</h2>
 
 	<form method='post' action="{{ url_for('newMenuItem', place_id=place_id ) }}">
-		<input type="text" name='name'>
+
+		<input type="text" name='name' placeholder="name">
+		<br><br>
+		<input type="text" name="price" size="5" placeholder="$1.00 price">
+		<br><br>
 		<input type="submit" value="create">
 
 	</form>

@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect
+from flask import render_template, request, redirect, url_for
 from menu import app, db
 from models import Place, MenuItem
 
@@ -14,11 +14,11 @@ def menu(place_id):
 @app.route('/place/<int:place_id>/new/', methods=['GET', 'POST'])
 def newMenuItem(place_id):
 	if request.method == 'POST':
-		newItem = MenuItem(name = request.form['name'], place_id=place_id)
+		newItem = MenuItem(name = request.form['name'], price= request.form['price'], place_id=place_id)
 		db.session.add(newItem)
 		db.session.commit()
 		return redirect(url_for('menu',place_id=place_id))
-		
+
 	if request.method == 'GET':
 		return render_template('newMenuItem.html', place_id=place_id)
 
