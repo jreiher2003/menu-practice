@@ -10,19 +10,13 @@
 
 <body>
 	<h1>Hello World this is</h1>
-	{% for pl in place %}
-
-	<h2>{{ pl.name }}</h2>
-
-	{% for p, i in items %}
+	<h2>{{ place.name }}</h2>
+	{% for i in items %}
 		{{ i.name }}<br>
 		{{ i.price }}<br>
 		{{ i.description }}<br>
 		<br>
 	{% endfor %}
-
-	{% endfor %}
-
 	
 </body>
 
