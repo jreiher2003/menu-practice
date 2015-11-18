@@ -19,8 +19,10 @@
 		<br>
 		{{ i.description }}
 		<br>
+		<a href="{{url_for('editMenuItem',place_id=place.id, menu_id=i.id)}}">edit</a>
+		<a href="{{url_for('deleteMenuItem', place_id=place.id, menu_id=i.id)}}">delete</a>
 		<br>
-		
+		<br>
 	{% endfor %}
 	
 </body>
