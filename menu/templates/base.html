@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+	{% if title %}
+	<title>{{ title }} - Menu</title>
+	{% else %}
+	<title>this is jeff regular title</title>
+	{% endif %}
+</head>
+
+<body>
+	<h1>Hello World this is</h1>
+	{% for pl in place %}
+	<h2>{{ pl.name }}</h2>
+	{% endfor %}
+	
+
+	
+</body>
+
+
+</html>
