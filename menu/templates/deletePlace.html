@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title>Delete {{ delplace.name }} Place</title>
+
+</head>
+
+<body>
+
+	<h1> Delete {{ delplace.name }} here</h1>
+
+		<form method="POST" action="{{ url_for('deletePlace', place_id=place_id) }}">
+	
+
+		
+		
+		<input type='submit' value="delete">
+
+	</form>
+
+
+</body>
+</html>
