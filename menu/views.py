@@ -4,11 +4,15 @@ from models import Place, MenuItem
 
 # read
 @app.route('/')
+def place():
+	places = db.session.query(Place).all()
+	return render_template('place.html', places=places)
+
 @app.route('/place/<int:place_id>/')
 def menu(place_id):
     place = db.session.query(Place).filter_by(id = place_id).one()
     items = db.session.query(MenuItem).filter_by(place_id=place_id)
-    return render_template('base.html', place=place, items=items)
+    return render_template('menu.html', place=place, items=items)
 
 # create
 @app.route('/place/<int:place_id>/new/', methods=['GET', 'POST'])
