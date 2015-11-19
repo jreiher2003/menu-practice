@@ -22,16 +22,27 @@ def newPlace():
 def editPlace(place_id):
 	place = db.session.query(Place).filter_by(id = place_id).one()
 	if request.method == "POST":
-		editPlace = db.session.query(Place).filter_by(id = place_id).one()
-		editPlace.name = request.form['name']
-		db.session.add(editPlace)
+		# editPlace = db.session.query(Place).filter_by(id = place_id).one()
+		place.name = request.form['name']
+		db.session.add(place)
 		db.session.commit()
+		flash('succesfully edited a Restaurant name!')
 		return redirect(url_for('menu', place_id=place_id))
 
 	return render_template('editPlace.html', place_id=place_id, place=place)
 
-def deletePlace():
-	pass
+@app.route('/place/<int:place_id>/delete/', methods=["GET", "POST"])
+def deletePlace(place_id):
+	delplace = db.session.query(Place).filter_by(id=place_id).one()
+	if request.method == 'POST':
+		db.session.delete(delplace)
+		db.session.commit()
+		flash('succesfully deleted a Restaurant!')
+		return redirect(url_for('place'))
+
+	
+	if request.method == 'GET':
+		return render_template('deletePlace.html', place_id=place_id, delplace=delplace)
 
 @app.route('/place/<int:place_id>/')
 def menu(place_id):
