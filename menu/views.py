@@ -16,10 +16,19 @@ def newPlace():
 		db.session.commit()
 		flash('New Restaurant Created!')
 		return redirect(url_for('place'))
-	return render_template('newplace.html')
+	return render_template('newPlace.html')
 
-def editPlace():
-	pass
+@app.route('/place/<int:place_id>/edit/', methods=["GET", "POST"])
+def editPlace(place_id):
+	place = db.session.query(Place).filter_by(id = place_id).one()
+	if request.method == "POST":
+		editPlace = db.session.query(Place).filter_by(id = place_id).one()
+		editPlace.name = request.form['name']
+		db.session.add(editPlace)
+		db.session.commit()
+		return redirect(url_for('menu', place_id=place_id))
+
+	return render_template('editPlace.html', place_id=place_id, place=place)
 
 def deletePlace():
 	pass

@@ -9,8 +9,17 @@
 </head>
 
 <body>
+	<a href="/">Home</a>
 	<h1>Hello World this is</h1>
-	<h2>{{ place.name }}</h2> 
+
+	
+		<h2>{{ place.name }}</h2> 
+		<a href="{{ url_for('editPlace', place_id=place.id) }}">edit</a>
+		<a href="#">delete</a>
+
+
+	<br><br>
+
 
 	{% with messages = get_flashed_messages() %}
 	{% if messages %}

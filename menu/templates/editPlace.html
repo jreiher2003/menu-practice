@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title>edit Place</title>
+
+</head>
+
+<body>
+
+	<h1> Edit {{ place.name }} here</h1>
+
+		<form method="POST" action="{{ url_for('editPlace', place_id=place_id) }}">
+	
+
+		<input type="text" name="name" placeholder="{{ place.name }}">
+		
+		<input type='submit' value="edit">
+
+	</form>
+
+
+</body>
+</html>
