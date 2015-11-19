@@ -11,6 +11,18 @@
 <body>
 	<h1>Hello World this is</h1>
 	<h2>{{ place.name }}</h2> 
+
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}
+
+		<ul>
+			{% for message in messages %}
+			<li> {{ message }} </li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+	{% endwith %}
+
 	<a href="{{ url_for('newMenuItem', place_id=place.id) }}">Create New Item</a>
 	<br><br>
 	{% for i in items %}

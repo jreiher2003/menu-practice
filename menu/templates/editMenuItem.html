@@ -10,8 +10,8 @@
 
 	<form method="POST" action="{{ url_for('editMenuItem', place_id=place_id, menu_id=menu_id) }}">
 
-		<input name="name" type="text" placeholder="{{placeholder.name}}">
-		<input name="price" type="text" placeholder="{{placeholder.price}}">
+		<input name="name" type="text" placeholder="{{i.name}}">
+		<input name="price" type="text" placeholder="{{i.price}}">
 		<input type='submit' value="edit">
 
 	</form>

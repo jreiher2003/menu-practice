@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, flash
 from menu import app, db
 from models import Place, MenuItem
 
@@ -17,6 +17,7 @@ def newMenuItem(place_id):
 		newItem = MenuItem(name = request.form['name'], price= request.form['price'], place_id=place_id)
 		db.session.add(newItem)
 		db.session.commit()
+		flash("new menu item created!")
 		return redirect(url_for('menu',place_id=place_id))
 
 	if request.method == 'GET':
@@ -32,9 +33,10 @@ def editMenuItem(place_id, menu_id):
 		umenu.price = request.form['price']
 		db.session.add(umenu)
 		db.session.commit()
+		flash("menu item succesfully edited")
 		return redirect(url_for('menu', place_id=place_id))
 
-	return render_template('editMenuItem.html', place_id=place_id,menu_id=menu_id,placeholder=placeholder)
+	return render_template('editMenuItem.html', place_id=place_id,menu_id=menu_id,i=placeholder)
 
 # delete
 @app.route('/place/<int:place_id>/<int:menu_id>/delete/', methods=["GET", "POST"])
@@ -43,6 +45,7 @@ def deleteMenuItem(place_id, menu_id):
 	if request.method == 'POST':
 		db.session.delete(delmenu)
 		db.session.commit()
+		flash("menu item succesfully deleted")
 		return redirect(url_for('menu', place_id=place_id))
 
-	return render_template('deleteMenuItem.html', place_id=place_id, menu_id=menu_id, delmenu=delmenu)
+	return render_template('deleteMenuItem.html', place_id=place_id, menu_id=menu_id, i=delmenu)

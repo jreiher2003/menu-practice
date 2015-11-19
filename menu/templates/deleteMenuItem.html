@@ -6,7 +6,7 @@
 
 <body>
 
-	<h1> You are deleting {{delmenu.name}} below</h1>
+	<h1> You are deleting {{i.name}} below</h1>
 
 	<form method="POST" action="{{ url_for('deleteMenuItem', place_id=place_id, menu_id=menu_id) }}">
 		<input type="submit" value="Delete Item">
