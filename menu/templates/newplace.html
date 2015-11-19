@@ -1,0 +1,18 @@
+<html>
+<head>
+	<title>New Retaurant</title>
+</head>
+<body>
+	<h1>Create New Resturant</h2>
+
+	<form method='post' action="{{ url_for('newPlace', place_id=place_id ) }}">
+
+		<input type="text" name='name' placeholder="name">
+		<br><br>
+		<br><br>
+		<input type="submit" value="create">
+
+	</form>
+
+</body>
+</html>

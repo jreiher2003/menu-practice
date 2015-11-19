@@ -3,7 +3,18 @@
 </head>
 <body>
 	<h1>Englewood Grub</h1>
-	<a href="#">Create New Restaurant</a>
+	<a href="{{ url_for('newPlace') }}">Create New Restaurant</a>
+	<br>
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}
+
+		<ul>
+			{% for message in messages %}
+			<li> {{ message }} </li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+	{% endwith %}
 	<br>
 	{% for place in places %}
 	<p><a href="/place/{{place.id}}/"> {{ place.name }} </a></p>

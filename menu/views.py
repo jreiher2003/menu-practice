@@ -8,6 +8,22 @@ def place():
 	places = db.session.query(Place).all()
 	return render_template('place.html', places=places)
 
+@app.route('/newplace/', methods=["GET", "POST"])
+def newPlace():
+	if request.method == 'POST':
+		newplace = Place(name = request.form['name'])
+		db.session.add(newplace)
+		db.session.commit()
+		flash('New Restaurant Created!')
+		return redirect(url_for('place'))
+	return render_template('newplace.html')
+
+def editPlace():
+	pass
+
+def deletePlace():
+	pass
+
 @app.route('/place/<int:place_id>/')
 def menu(place_id):
     place = db.session.query(Place).filter_by(id = place_id).one()
