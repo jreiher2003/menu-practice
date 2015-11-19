@@ -8,7 +8,6 @@ class Place(db.Model):
     def __repr__(self):
         return '<Place %r>' % (self.name)
 
-
 class MenuItem(db.Model):
 	__tablename__ = 'menuItem'
 	name = db.Column(db.String(80), nullable=False)

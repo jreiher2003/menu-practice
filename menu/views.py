@@ -23,9 +23,18 @@ def newMenuItem(place_id):
 		return render_template('newMenuItem.html', place_id=place_id)
 
 # update
-@app.route('/place/<int:place_id>/<int:menu_id>/edit/')
+@app.route('/place/<int:place_id>/<int:menu_id>/edit/', methods=['GET', 'POST'])
 def editMenuItem(place_id, menu_id):
-	return "page to edit new menu items. task 2 complete"
+	placeholder = db.session.query(MenuItem).filter_by(id = menu_id).one()		
+	if request.method == 'POST':
+		umenu = db.session.query(MenuItem).filter_by(id = menu_id).one()
+		umenu.name = request.form['name']
+		umenu.price = request.form['price']
+		db.session.add(umenu)
+		db.session.commit()
+		return redirect(url_for('menu', place_id=place_id))
+
+	return render_template('editMenuItem.html', place_id=place_id,menu_id=menu_id,placeholder=placeholder)
 
 # delete
 @app.route('/place/<int:place_id>/<int:menu_id>/delete/')
