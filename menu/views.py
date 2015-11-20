@@ -2,6 +2,9 @@ from flask import render_template, request, redirect, url_for, flash
 from menu import app, db
 from models import Place, MenuItem
 
+@app.route('/base/')
+def base():
+	return render_template('base.html')
 # read
 @app.route('/')
 def place():
