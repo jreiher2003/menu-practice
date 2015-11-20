@@ -1,26 +1,27 @@
-<html>
-<head>
-</head>
-<body>
-	<h1>Englewood Grub</h1>
-	<a href="{{ url_for('newPlace') }}">Create New Restaurant</a>
-	<br>
-	{% with messages = get_flashed_messages() %}
-	{% if messages %}
+{% extends 'base.html' %}
+{% block content %}
+	
+	<div class="container">
+		<h1>Englewood Grub</h1>
+		<a href="{{ url_for('newPlace') }}">Create New Restaurant</a>
+		<br>
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
 
 		<ul>
 			{% for message in messages %}
 			<li> {{ message }} </li>
 			{% endfor %}
 		</ul>
-	{% endif %}
-	{% endwith %}
-	<br>
-	{% for place in places %}
-	<p><a href="/place/{{place.id}}/"> {{ place.name }} </a></p>
-	<a href="{{ url_for('editPlace', place_id=place.id) }}">edit</a>
-	<a href="{{ url_for('deletePlace', place_id=place.id) }}">delete</a>
-	<br><br>
+		{% endif %}
+		{% endwith %}
+		<br>
+		{% for place in places %}
+		<p><a href="/place/{{place.id}}/"> {{ place.name }} </a></p>
+		<a href="{{ url_for('editPlace', place_id=place.id) }}">edit</a>
+		<a href="{{ url_for('deletePlace', place_id=place.id) }}">delete</a>
+		<br><br>
 	{% endfor %}
-</body>
-</html>
+
+	</div>
+{% endblock %}

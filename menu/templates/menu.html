@@ -1,40 +1,33 @@
-<!doctype html>
-<html>
-<head>
-	{% if title %}
-	<title>{{ title }} - Menu</title>
-	{% else %}
-	<title>this is jeff regular title</title>
-	{% endif %}
-</head>
+{% extends 'base.html' %}
+{% block content %}
 
-<body>
+<div class="container">
 	<a href="/">Home</a>
 	<h1>Hello World this is</h1>
 
 	
-		<h2>{{ place.name }}</h2> 
+	<h2>{{ place.name }}</h2> 
 		<!-- <a href="{{ url_for('editPlace', place_id=place.id) }}">edit</a>
 		<a href="{{ url_for('deletePlace', place_id=place.id) }}">delete</a> -->
 
 
-	<br><br>
+		<br><br>
 
 
-	{% with messages = get_flashed_messages() %}
-	{% if messages %}
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
 
 		<ul>
 			{% for message in messages %}
 			<li> {{ message }} </li>
 			{% endfor %}
 		</ul>
-	{% endif %}
-	{% endwith %}
+		{% endif %}
+		{% endwith %}
 
-	<a href="{{ url_for('newMenuItem', place_id=place.id) }}">Create New Item</a>
-	<br><br>
-	{% for i in items %}
+		<a href="{{ url_for('newMenuItem', place_id=place.id) }}">Create New Item</a>
+		<br><br>
+		{% for i in items %}
 		{{ i.name }}
 		<br>
 		{{ i.price }}
@@ -45,9 +38,7 @@
 		<a href="{{url_for('deleteMenuItem', place_id=place.id, menu_id=i.id)}}">delete</a>
 		<br>
 		<br>
-	{% endfor %}
-	
-</body>
+		{% endfor %}
 
-
-</html>
+</div>
+{% endblock %}
