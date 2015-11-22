@@ -1,0 +1,12 @@
+/* TEAM */
+created by: Jeffrey Reiher 
+email: me@jeffreiher.com
+twitter: @bigjeffdogg
+location: Englewood, Fl, USA.
+
+
+/* SITE */
+Software: HTML5, CSS3
+    jQuery, Modernizr,
+    Bootstrap, Python,
+    Flask, Grunt, NPM
