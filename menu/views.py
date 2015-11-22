@@ -92,3 +92,7 @@ def deleteMenuItem(place_id, menu_id):
 		return redirect(url_for('menu', place_id=place_id))
 
 	return render_template('deleteMenuItem.html', place_id=place_id, menu_id=menu_id, i=delmenu)
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
