@@ -5,12 +5,12 @@
 {% block content %}
 
 <div class="container">
-	<h1> You are deleting {{i.name}} below</h1>
+	<h1 class="h1"> You are deleting {{i.name}} below</h1>
 
-	<form method="POST" action="{{ url_for('deleteMenuItem', place_id=place_id, menu_id=menu_id) }}">
-		<input class="btn btn-default" type="submit" value="Delete Item">
+	<form class="form-inline" method="POST" action="{{ url_for('deleteMenuItem', place_id=place_id, menu_id=menu_id) }}">
+		<input class="btn btn-danger" type="submit" value="Delete Item">
+		<a class="btn btn-default" href="{{url_for('menu', place_id=place_id)}}">Cancel</a>
 	</form>
 
-	<a href="{{url_for('menu', place_id=place_id)}}">Cancel</a>
 </div>
 {% endblock %}
