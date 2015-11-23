@@ -4,7 +4,7 @@
 {% block content %}
 
 <div class="container">
-	<h1>Create New Menu Item</h2>
+	<h1 class="h1">Create New Menu Item</h2>
 
 		<form method='post' action="{{ url_for('newMenuItem', place_id=place_id ) }}">
 			<div class="input-group">
@@ -20,8 +20,8 @@
 			<br><br>
 			<button type="submit" class="btn btn-default">Create</button>
 
+			<a href="{{url_for('menu', place_id=place_id)}}">Cancel</a>
 		</form>
-		<a href="{{url_for('menu', place_id=place_id)}}">Cancel</a>
 
 	</div>
 

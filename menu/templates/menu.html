@@ -8,22 +8,23 @@
 	<h1>Hello World this is</h1>
 
 	
-	<h2>{{ place.name }}</h2> 
+	<h2 class="h2">{{ place.name }}</h2> 
 		<!-- <a href="{{ url_for('editPlace', place_id=place.id) }}">edit</a>
 		<a href="{{ url_for('deletePlace', place_id=place.id) }}">delete</a> -->
 
 
 		<br><br>
 
-
 		{% with messages = get_flashed_messages() %}
 		{% if messages %}
 
-		<ul>
+		<div class="alert alert-success" role="alert">
+		<ul class="list-unstyled">
 			{% for message in messages %}
 			<li> {{ message }} </li>
 			{% endfor %}
 		</ul>
+		</div>
 		{% endif %}
 		{% endwith %}
 
