@@ -29,7 +29,7 @@ def editPlace(place_id):
 		place.name = request.form['name']
 		db.session.add(place)
 		db.session.commit()
-		flash('succesfully edited a Restaurant name!')
+		flash('Succesfully Edited A Restaurant Name!')
 		return redirect(url_for('menu', place_id=place_id))
 
 	return render_template('editPlace.html', place_id=place_id, place=place)
@@ -40,7 +40,7 @@ def deletePlace(place_id):
 	if request.method == 'POST':
 		db.session.delete(delplace)
 		db.session.commit()
-		flash('succesfully deleted a Restaurant!')
+		flash('Succesfully Deleted A Restaurant!')
 		return redirect(url_for('place'))
 
 	
@@ -60,7 +60,7 @@ def newMenuItem(place_id):
 		newItem = MenuItem(name = request.form['name'], price= request.form['price'], place_id=place_id)
 		db.session.add(newItem)
 		db.session.commit()
-		flash("new menu item created!")
+		flash("New Menu Item Created!")
 		return redirect(url_for('menu',place_id=place_id))
 
 	if request.method == 'GET':
@@ -76,7 +76,7 @@ def editMenuItem(place_id, menu_id):
 		umenu.price = request.form['price']
 		db.session.add(umenu)
 		db.session.commit()
-		flash("menu item succesfully edited")
+		flash("Menu item Succesfully Edited.")
 		return redirect(url_for('menu', place_id=place_id))
 
 	return render_template('editMenuItem.html', place_id=place_id,menu_id=menu_id,i=placeholder)
@@ -88,7 +88,7 @@ def deleteMenuItem(place_id, menu_id):
 	if request.method == 'POST':
 		db.session.delete(delmenu)
 		db.session.commit()
-		flash("menu item succesfully deleted")
+		flash("Menu Item Succesfully Deleted")
 		return redirect(url_for('menu', place_id=place_id))
 
 	return render_template('deleteMenuItem.html', place_id=place_id, menu_id=menu_id, i=delmenu)
