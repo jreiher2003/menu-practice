@@ -17,7 +17,7 @@ def newPlace():
 		newplace = Place(name = request.form['name'])
 		db.session.add(newplace)
 		db.session.commit()
-		flash('New Restaurant Created!')
+		flash('New Restaurant Created!', 'success')
 		return redirect(url_for('place'))
 	return render_template('newPlace.html')
 
@@ -29,8 +29,8 @@ def editPlace(place_id):
 		place.name = request.form['name']
 		db.session.add(place)
 		db.session.commit()
-		flash('Succesfully Edited A Restaurant Name!')
-		return redirect(url_for('menu', place_id=place_id))
+		flash('Succesfully Edited A Restaurant Name!', 'info')
+		return redirect(url_for('place'))
 
 	return render_template('editPlace.html', place_id=place_id, place=place)
 
@@ -40,7 +40,7 @@ def deletePlace(place_id):
 	if request.method == 'POST':
 		db.session.delete(delplace)
 		db.session.commit()
-		flash('Succesfully Deleted A Restaurant!')
+		flash('Succesfully Deleted A Restaurant!', 'danger')
 		return redirect(url_for('place'))
 
 	
@@ -60,7 +60,7 @@ def newMenuItem(place_id):
 		newItem = MenuItem(name = request.form['name'], price= request.form['price'], place_id=place_id)
 		db.session.add(newItem)
 		db.session.commit()
-		flash("New Menu Item Created!")
+		flash("New Menu Item Created!", 'success')
 		return redirect(url_for('menu',place_id=place_id))
 
 	if request.method == 'GET':
@@ -76,7 +76,7 @@ def editMenuItem(place_id, menu_id):
 		umenu.price = request.form['price']
 		db.session.add(umenu)
 		db.session.commit()
-		flash("Menu item Succesfully Edited.")
+		flash("Menu item Succesfully Edited.", 'info')
 		return redirect(url_for('menu', place_id=place_id))
 
 	return render_template('editMenuItem.html', place_id=place_id,menu_id=menu_id,i=placeholder)
@@ -88,7 +88,7 @@ def deleteMenuItem(place_id, menu_id):
 	if request.method == 'POST':
 		db.session.delete(delmenu)
 		db.session.commit()
-		flash("Menu Item Succesfully Deleted")
+		flash("Menu Item Succesfully Deleted", 'danger')
 		return redirect(url_for('menu', place_id=place_id))
 
 	return render_template('deleteMenuItem.html', place_id=place_id, menu_id=menu_id, i=delmenu)
